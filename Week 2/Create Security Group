@@ -1,0 +1,8 @@
+Navigate to the EC2 Dashboard.
+In navigation panel locate Security group in Network & Secuirty Tab
+Initiate Creation: Click the "Create security group" button.
+Config basic setting by providing NAME of security group and description of security group
+Select the VPC where you want to create this security group.
+Under the "Inbound rules" section, click "Add rule."
+Type (e.g., SSH, HTTP, HTTPS, Custom TCP Rule)(e.g., My IP, Anywhere IIPV4, or another Security Group ID) for incoming traffic that should be allowed.
+Review and Create: Review your configured rules and settings, then click "Create security group." 
