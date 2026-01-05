@@ -1,0 +1,37 @@
+In AWS Console select VPC choose VPC and more ( Create route table and IGW)
+In name tags generation make name 
+In IPV4 CIDR block create IP range
+Choose number of Availability Zones: 2 ( AZ) select public and private Subnets 2, make customization for both Pulic and Private Subnets 
+VPC endpoint is None, Select Create VPC
+Create Security group: Nmae and description add inbound rules there will be two HTTP and SSH, select custom vpc
+Create policies and role that will attach to EC2 
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadSpecificSecret",
+      "Effect": "Allow",
+      "Action": ["secretsmanager:GetSecretValue"],
+      "Resource": "arn:aws:secretsmanager:<REGION>:<ACCOUNT_ID>:secret:lab/rds/mysql*"
+    }
+  ]
+}
+Have to change region and account ID, Create policy name add description
+Create Role select aws service and Use case select EC2 then choose  custom policy that was created, name role
+EC2 creations: - Default setting for AMI  - Default instance type and settings 
+ create key pair - Choose created VPC, public subnet, and public security group   Also, don't forget to change your region to the one you want to be in instead of Theos' us-east-1 default
+enable 'Auto-assign public IP' - Double-check, pray, then launch instance - in user data, under pip install flask pymysql boto3, add the following: dnf install mariadb105 -y
+Change region  from the default in user data_sh  
+Test user data_sh by copy/ past in browser 
+create database under 'Aurora and RDS'
+Select Subnet group, select vpc ( Custom vpc)
+Choose two Az has to connect to private subnet in assigned  Availability zones (Az)
+Select create DBS choose full config and Mysql select free tier single AZ --choose name Lab-msql--- 
+Select Self  managed  to create  password then connect to EC2  choose existing DBS Subnet then create vpc
+Test connection go to EC2 instance select connection put in commands from Theo to verification
+aws secretsmanager get-secret-value --secret-id lab/rds/mysql(pull the RDS password from Secrets Manager )
+mysql -h <RDS_ENDPOINT> -u admin -p( verify end point connection and IP ask for password)
+ User_data_sh  shows with notes 
+
+
+
